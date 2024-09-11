@@ -1,2 +1,7 @@
-package me.wisdom.thepit.holograms;public class ViewMode {
+package me.wisdom.thepit.holograms;
+
+public enum ViewMode {
+    ALL,
+    SELECT,
+    ;
 }

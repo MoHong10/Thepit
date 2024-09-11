@@ -1,0 +1,5 @@
+prefix: ''
+error-prefix: '&c'
+server: pitsim-1
+pterodactyl-id: XXXXXXX
+standalone-server: true

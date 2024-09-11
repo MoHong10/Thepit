@@ -1,2 +1,5 @@
-package me.wisdom.thepit.misc.packets;public class SignCallback {
+package me.wisdom.thepit.misc.packets;
+
+public interface SignCallback {
+    void run(String input);
 }

@@ -1,2 +1,36 @@
-package me.wisdom.thepit.enchants.tainted.common;public class AnomalyDetected {
+package me.wisdom.thepit.enchants.tainted.common;
+
+import me.wisdom.thepit.controllers.objects.BasicDarkzoneEnchant;
+import me.wisdom.thepit.darkzone.PitMob;
+import me.wisdom.thepit.darkzone.mobs.PitWitherSkeleton;
+import me.wisdom.thepit.darkzone.mobs.PitZombiePigman;
+import me.wisdom.thepit.enums.ApplyType;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class AnomalyDetected extends BasicDarkzoneEnchant {
+    public static AnomalyDetected INSTANCE;
+
+    public AnomalyDetected() {
+        super("Anomaly Detected!", false, ApplyType.SCYTHES,
+                "anomalydetected", "anomaly");
+        isTainted = true;
+        INSTANCE = this;
+    }
+
+    @Override
+    public int getBaseStatPercent(int enchantLvl) {
+        return enchantLvl * 9 + 8;
+    }
+
+    @Override
+    public boolean isOffensive() {
+        return true;
+    }
+
+    @Override
+    public List<Class<? extends PitMob>> getApplicableMobs() {
+        return Arrays.asList(PitZombiePigman.class, PitWitherSkeleton.class);
+    }
 }

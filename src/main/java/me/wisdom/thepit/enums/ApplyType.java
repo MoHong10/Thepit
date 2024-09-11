@@ -1,2 +1,20 @@
-package me.wisdom.thepit.enums;public class ApplyType {
+package me.wisdom.thepit.enums;
+
+public enum ApplyType {
+
+    BOWS,
+    SWORDS,
+    MELEE,
+    PANTS,
+    WEAPONS,
+    ALL,
+    NONE,
+
+    CHESTPLATES,
+    SCYTHES,
+    TAINTED;
+
+    public boolean isTainted() {
+        return this == CHESTPLATES || this == SCYTHES || this == TAINTED;
+    }
 }

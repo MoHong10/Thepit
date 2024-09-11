@@ -1,2 +1,8 @@
-package me.wisdom.thepit.enums;public class EnchantRarity {
+package me.wisdom.thepit.enums;
+
+public enum EnchantRarity {
+
+    COMMON,
+    UNCOMMON,
+    RARE
 }

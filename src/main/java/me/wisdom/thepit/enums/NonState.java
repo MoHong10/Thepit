@@ -1,2 +1,7 @@
-package me.wisdom.thepit.enums;public class NonState {
+package me.wisdom.thepit.enums;
+
+public enum NonState {
+
+    RESPAWNING,
+    FIGHTING
 }

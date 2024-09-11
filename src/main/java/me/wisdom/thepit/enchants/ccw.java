@@ -1,2 +1,4 @@
-package me.wisdom.thepit.enchants;public class ccw {
+package me.wisdom.thepit.enchants;
+
+public class ccw {
 }

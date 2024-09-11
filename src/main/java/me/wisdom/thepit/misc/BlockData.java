@@ -1,2 +1,13 @@
-package me.wisdom.thepit.misc;public class BlockData {
+package me.wisdom.thepit.misc;
+
+import org.bukkit.Material;
+
+public class BlockData {
+    public Material material;
+    public byte data;
+
+    public BlockData(Material material, byte data) {
+        this.material = material;
+        this.data = data;
+    }
 }

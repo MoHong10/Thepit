@@ -1,2 +1,56 @@
-package me.wisdom.thepit.leaderboards;public class JewelsCompletedLeaderboard {
+package me.wisdom.thepit.leaderboards;
+
+import me.wisdom.thepit.controllers.objects.Leaderboard;
+import me.wisdom.thepit.controllers.objects.LeaderboardData;
+import me.wisdom.thepit.controllers.objects.LeaderboardPosition;
+import me.wisdom.thepit.controllers.objects.PitPlayer;
+import me.wisdom.thepit.enums.MysticType;
+import me.wisdom.thepit.enums.PantColor;
+import me.wisdom.thepit.items.MysticFactory;
+import me.wisdom.thepit.misc.Formatter;
+import me.wisdom.thepitapi.builders.AItemStackBuilder;
+import me.wisdom.thepitapi.builders.ALoreBuilder;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.UUID;
+
+public class JewelsCompletedLeaderboard extends Leaderboard {
+    public JewelsCompletedLeaderboard() {
+        super("jewels-completed", "&3Jewels Completed");
+    }
+
+    @Override
+    public ItemStack getDisplayStack(UUID uuid) {
+        ItemStack itemStack = new AItemStackBuilder(MysticFactory.getFreshItem(MysticType.PANTS, PantColor.JEWEL))
+                .setName("&3Jewels Completed")
+                .setLore(new ALoreBuilder(
+                        "&7Players who have &3completed &7the", "&7most &3jewels", ""
+                ).addLore(getTopPlayers(uuid)).addLore(
+                        "", "&eClick to pick!"
+                ))
+                .getItemStack();
+        return itemStack;
+    }
+
+    @Override
+    public String getDisplayValue(LeaderboardPosition position) {
+        return "&c" + Formatter.formatLarge(position.intValue) + " jewel" + (position.intValue == 1 ? "" : "s");
+    }
+
+    @Override
+    public String getDisplayValue(PitPlayer pitPlayer) {
+        return "&c" + Formatter.formatLarge(pitPlayer.stats.jewelsCompleted) + " jewel" + (pitPlayer.stats.jewelsCompleted == 1 ? "" : "s");
+    }
+
+    @Override
+    public void setPosition(LeaderboardPosition position) {
+        LeaderboardData data = LeaderboardData.getLeaderboardData(this);
+
+        position.intValue = (int) data.getValue(position.uuid).primaryValue;
+    }
+
+    @Override
+    public boolean isMoreThanOrEqual(LeaderboardPosition position, LeaderboardPosition otherPosition) {
+        return position.intValue >= otherPosition.intValue;
+    }
 }
