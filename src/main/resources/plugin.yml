@@ -1,0 +1,3 @@
+name: Thepit
+version: '${project.version}'
+main: me.wisdom.thepit.Thepit
